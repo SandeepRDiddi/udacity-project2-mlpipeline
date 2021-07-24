@@ -1,64 +1,35 @@
-# Disaster Response Project(Udacity Project which includes)
-1. ETL Pipeline 
-2. Machine Learning (Supervised ML and NLP)
-3. Deployment 
-4. API exposing to Classify the new messages based on the trained model
+# Disaster Response Pipeline with Figure Eight 
 
+Apply Data Engineering to Build ETL &amp; NLP Pipelines and Create an App for Disaster Relief using Flask 
 
-**Disaster Response Pipeline**
+In this project, I am applying Data Engineering & Data Science skills to analyze disaster data from Figure Eight to 
+build a model for an API that classifies disaster messages.
 
-Overview
-The project used a data set from Figure Eight that contained labeled disaster messages received. A Random Forrest classifier was trained and natural language processing (NLP) was also used to model the Labeled Text Messaged.
+The project contains data set containing real messages that were sent during disaster events. 
+I am creating a machine learning pipeline to categorize these events so that it can be sent to an appropriate 
+disaster relief agency.
 
-An ETL pipeline was created with below steps 
+Project includes a web app where an emergency worker can input a new message and get classification results 
+in several categories. The web app displays visualizations of the data.
 
-1.Extracting data from the CSV Files
+### There are three components in this project.
 
-2.Cleaning the CSV Files and loading into an SQL database which will be further picked by model for training
+1) ETL Pipeline
+A Python script, process_data.py, a data cleaning pipeline that:
 
-3.ML pipeline is created to extract the Text features and optimize algorithm using grid search as thought in Udacity
+Loads the messages and categories datasets
+Merges the two datasets
+Cleans the data
+Stores it in a SQLite database
 
-4.A web app is developed that extracts data from database and provides visual summaries
+2) ML Pipeline
+A Python script, train_classifier.py, a machine learning pipeline that:
 
+Loads data from the SQLite database
+Splits the dataset into training and test sets
+Builds a text processing and machine learning pipeline
+Trains and tunes a model using GridSearchCV
+Outputs results on the test set
+Exports the final model as a pickle file
 
-**Technologies Used**
-
-Python Libaries used for this project are 
-
-1. Pandas -- For reading the files
-2. sklearn -- For ML Training and Splitting data into train and test
-3. sqlite3  -- Database to load data 
-4. sqlalchemy -- Data Tool Kit which will be used to load engineered 
-5. nltk -- Libary for Natural Language processing 
-6. plotly  -- Displaying the Visuals 
-7. flask -- To build the Flas APP
-
-
-
-**Instructions**:
-
-Following commands needs to be run in the project's root directory to set up DB and Model
-
-To run ETL pipeline that cleans data and stores in database are as below 
-
-1.data/process_data.py 
-
-2.data/disaster_messages.csv 
-
-3.data/disaster_categories.csv 
-
-4.data/DisasterResponse.db
-
-To run ML pipeline that trains classifier and saves the pickle files are 
-
-1.models/train_classifier.py 
-
-2.data/DisasterResponse.db 
-
-3.models/classifier.pkl
-
-
-
-**Once the model is trained and deployed we will need to expose the End point on UI and that UI Should have capabilities to classifiy the New message 
-
-
+3) Flask Web App
